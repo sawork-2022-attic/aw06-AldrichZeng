@@ -25,6 +25,8 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 
+import java.sql.SQLException;
+
 //@Configuration
 //@EnableBatchProcessing
 public class PartitionConfig {
@@ -73,7 +75,7 @@ public class PartitionConfig {
     }
 
     @Bean
-    public ItemWriter<Product> itemWriter() {
+    public ItemWriter<Product> itemWriter() throws SQLException, ClassNotFoundException {
         return new ProductWriter();
     }
 
